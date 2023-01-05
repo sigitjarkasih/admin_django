@@ -1,12 +1,12 @@
 from django import urls
 from django.urls import path
-from api.viewsGroup.article_syariaharea.create import create
-from api.viewsGroup.article_syariaharea.list import list
-from api.viewsGroup.article_syariaharea.listById import listById
-from api.viewsGroup.article_syariaharea.update import update
-from api.viewsGroup.article_syariaharea.imageUpload import imageUpload
-from api.viewsGroup.article_syariaharea.listActive import listActive
-from api.viewsGroup.article_syariaharea.delete import delete
+from api.viewsGroup.dgmall_donasi.create import create
+from api.viewsGroup.dgmall_donasi.list import list
+from api.viewsGroup.dgmall_donasi.listById import listById
+from api.viewsGroup.dgmall_donasi.update import update
+from api.viewsGroup.dgmall_donasi.imageUpload import imageUpload
+from api.viewsGroup.dgmall_donasi.listActive import listActive
+from api.viewsGroup.dgmall_donasi.delete import delete
 
 urlpatterns = [
     path("list/", list),
