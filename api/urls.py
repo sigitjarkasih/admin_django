@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .urlsGroup import (
-    article_event, article_login, article_register, article_pembeli, article_penjual, article_dompetmadrasah, article_staycation, article_akadtransaksi, article_syariaharea, article_donasi
+    article_event, article_login, article_register, article_pembeli, article_penjual, article_dompetmadrasah, article_staycation, article_akadtransaksi, article_syariaharea, article_donasi, dgmall_donasi
 )
 
 urlpatterns = [
@@ -17,6 +17,8 @@ urlpatterns = [
     path("v1/akad-transaksi/", include(article_akadtransaksi.urlpatterns)),
     path("v1/syariah-area/", include(article_syariaharea.urlpatterns)),
     path("v1/donasi/", include(article_donasi.urlpatterns)),
+    path("v1/donasii/", include(article_donasi.urlpatterns)),
+
     
 ]
 
