@@ -7,6 +7,6 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
-django_admin_dokumentasi/settings.py
+dokumentasi/settings.py
 z_developer
 .env
