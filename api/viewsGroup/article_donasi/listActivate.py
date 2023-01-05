@@ -13,7 +13,7 @@ def listActive(request):
         cursor = connection.cursor()
         query = """
                     SELECT *
-                    FROM dgmall_donasi
+                    FROM article_donasi
                     WHERE 
                         is_active = 1
                     ORDER BY created_at DESC

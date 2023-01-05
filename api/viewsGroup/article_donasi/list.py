@@ -6,16 +6,16 @@ import json
 
 
 @csrf_exempt
-def listById(request):
+def list(request):
     # userToken = request.headers.get('Authorization').replace("BASIC ", "")
     if request.method == "POST":
-        dataRequest = json.loads(request.body.decode("utf-8"))
+        # dataRequest = json.loads(request.body.decode("utf-8"))
         cursor = connection.cursor()
         query = """
-                SELECT *
-                FROM dgmall_donasi
-                WHERE id = %s
+                    SELECT *
+                    FROM article_donasi
+                    ORDER BY created_at DESC
                 """
-        cursor.execute(query, [dataRequest['id']])
+        cursor.execute(query)
         data = astpy.dictfetchall(cursor)
         return JsonResponse(data, safe=False)

@@ -4,7 +4,7 @@ import os
 import time
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
-from api.database.dgmall.dgmall_donasi import DgmallDonasi
+from api.database.dgmall.article_donasi import ArticleDonasi
 
 
 @csrf_exempt
@@ -16,7 +16,7 @@ def imageUpload(request):
         upload_file = request.FILES["image"]
 
         # GET DATA BANNER BASED ON ID
-        dataDonasi = DgmallDonasi.objects.get(id=id)
+        dataDonasi = ArticleDonasi.objects.get(id=id)
                 
         # HAPUS YANG LAMA
         old_image_link = dataDonasi.image_link
@@ -35,10 +35,10 @@ def imageUpload(request):
 
         # UPLOAD NEW PHOTO TO MEDIA
         fs = FileSystemStorage()
-        fs.save("donasi/" + new_filename, upload_file)
+        fs.save("dompetmadrasah/" + new_filename, upload_file)
 
         # UPDATE RECORD
-        dataDonasi.image_link = "/media/donasi/" + new_filename
+        dataDonasi.image_link = "/media/dompetmadrasah/" + new_filename
         dataDonasi.save()
 
         return HttpResponse('success')

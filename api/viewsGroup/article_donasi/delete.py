@@ -1,7 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
-from api.database.dgmall.dgmall_donasi import DgmallDonasi
+from api.database.dgmall.article_donasi import ArticleDonasi
 from django.conf import settings
 import os
 
@@ -13,7 +13,7 @@ def delete(request):
         dataRequest = json.loads(request.body.decode("utf-8"))
 
         # GET DATA BANNER BASED ON ID
-        dataArticle = DgmallDonasi.objects.get(id=dataRequest["id"])
+        dataArticle = ArticleDonasi.objects.get(id=dataRequest["id"])
 
         # HAPUS YANG LAMA
         old_image_link = dataArticle.image_link
@@ -24,7 +24,7 @@ def delete(request):
         except:
             pass
 
-        DgmallDonasi.objects.filter(id=dataRequest["id"]).delete()
+        ArticleDonasi.objects.filter(id=dataRequest["id"]).delete()
 
         return HttpResponse("success")
     else:
