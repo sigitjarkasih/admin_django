@@ -1,7 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
-from api.database.dgmall.article_donasi import ArticleDonasi
+from api.database.dgmall.dgmall_donasi import DgmallDonasi
 
 
 @csrf_exempt
@@ -9,7 +9,7 @@ def update(request):
     # userToken = request.headers.get('Authorization').replace("BASIC ", "")
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
-        obj = ArticleDonasi.objects.get(id=data["id"])
+        obj = DgmallDonasi.objects.get(id=data["id"])
 
         try:
             obj.master_judul = data["master_judul"]

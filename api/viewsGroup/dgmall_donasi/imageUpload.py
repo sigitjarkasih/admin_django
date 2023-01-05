@@ -4,7 +4,7 @@ import os
 import time
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
-from api.database.dgmall.article_donasi import ArticleDonasi
+from api.database.dgmall.dgmall_donasi import DgmallDonasi
 
 
 @csrf_exempt
@@ -16,10 +16,10 @@ def imageUpload(request):
         upload_file = request.FILES["image"]
 
         # GET DATA BANNER BASED ON ID
-        dataDonasi = ArticleDonasi.objects.get(id=id)
+        dataDonasii = DgmallDonasi.objects.get(id=id)
                 
         # HAPUS YANG LAMA
-        old_image_link = dataDonasi.image_link
+        old_image_link = dataDonasii.image_link
 
         # REMOVE OLD FILE
         try:
@@ -35,10 +35,10 @@ def imageUpload(request):
 
         # UPLOAD NEW PHOTO TO MEDIA
         fs = FileSystemStorage()
-        fs.save("syariaharea/" + new_filename, upload_file)
+        fs.save("donasii/" + new_filename, upload_file)
 
         # UPDATE RECORD
-        dataDonasi.image_link = "/media/syariaharea/" + new_filename
-        dataDonasi.save()
+        dataDonasii.image_link = "/media/donasii/" + new_filename
+        dataDonasii.save()
 
         return HttpResponse('success')

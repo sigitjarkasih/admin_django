@@ -35,10 +35,10 @@ def imageUpload(request):
 
         # UPLOAD NEW PHOTO TO MEDIA
         fs = FileSystemStorage()
-        fs.save("dompetmadrasah/" + new_filename, upload_file)
+        fs.save("donasi/" + new_filename, upload_file)
 
         # UPDATE RECORD
-        dataDonasi.image_link = "/media/dompetmadrasah/" + new_filename
+        dataDonasi.image_link = "/media/donasi/" + new_filename
         dataDonasi.save()
 
         return HttpResponse('success')
