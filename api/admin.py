@@ -1,13 +1,14 @@
 from django.contrib import admin
-from .models import DgmallArticle, DgmallUserArticle
+from api.database.dgmall.dgmall_donasi import DgmallDonasi
 # Register your models here.
+from api.database.dgmall.article_login import ArticleLogin
 
-class DgmallArticleAdmin(admin.ModelAdmin):
+class DgmallDonasiAdmin(admin.ModelAdmin):
     pass
 
-class DgmallUserArticleAdmin(admin.ModelAdmin):
+class DgmallLoginAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(DgmallArticle, DgmallArticleAdmin)
-admin.site.register(DgmallUserArticle, DgmallUserArticleAdmin)
+admin.site.register(DgmallDonasi)
+admin.site.register(ArticleLogin)
