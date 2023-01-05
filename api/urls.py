@@ -17,7 +17,7 @@ urlpatterns = [
     path("v1/akad-transaksi/", include(article_akadtransaksi.urlpatterns)),
     path("v1/syariah-area/", include(article_syariaharea.urlpatterns)),
     path("v1/donasi/", include(article_donasi.urlpatterns)),
-    path("v1/donasii/", include(article_donasi.urlpatterns)),
+    path("v1/donasii/", include(dgmall_donasi.urlpatterns)),
 
     
 ]
