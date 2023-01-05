@@ -2,11 +2,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .urlsGroup import (
-    article_event, article_login, article_register, article_pembeli, article_penjual, article_dompetmadrasah, article_staycation, article_akadtransaksi, article_syariaharea, article_donasi, dgmall_donasi
+    article_donasi, article_event, article_login, article_register, article_pembeli, article_penjual, article_dompetmadrasah, article_staycation, article_akadtransaksi, article_syariaharea
 )
 
 urlpatterns = [
     #ADMIN
+    path("v1/donasu/", include(article_donasi.urlpatterns)),
     path("v1/login/", include(article_login.urlpatterns)),
     path("v1/register/", include(article_register.urlpatterns)),
     path("v1/pembeli/", include(article_pembeli.urlpatterns)),
@@ -16,10 +17,6 @@ urlpatterns = [
     path("v1/staycation/", include(article_staycation.urlpatterns)),
     path("v1/akad-transaksi/", include(article_akadtransaksi.urlpatterns)),
     path("v1/syariah-area/", include(article_syariaharea.urlpatterns)),
-    path("v1/donasi/", include(article_donasi.urlpatterns)),
-    path("v1/donasii/", include(dgmall_donasi.urlpatterns)),
-
-    
 ]
 
 if settings.DEBUG:

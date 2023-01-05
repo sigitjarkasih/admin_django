@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 
-class DgmallDonasi(models.Model):
+class Article_donasi(models.Model):
     id = models.CharField(max_length=32, primary_key=True)
     master_judul= models.CharField(null=True, blank=True,max_length=100, default=None)
     title = models.TextField(null=True, blank=True)
@@ -12,7 +12,7 @@ class DgmallDonasi(models.Model):
     updated_at = models.DateTimeField(auto_now=True, blank=True)
 
     class Meta:
-        db_table = "dgmall_donasi"
+        db_table = "article_donasi"
 
     def __str__(self):
         return "{}".format(self.id)
