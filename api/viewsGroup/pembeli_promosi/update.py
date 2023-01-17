@@ -1,26 +1,21 @@
-from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.database.pembeli.komplainpesanan import PembeliKomplain
+from django.http import HttpResponse
 import json
-import uuid
+from api.database.pembeli.promosi import PembeliPromosi
 
 
 @csrf_exempt
-def create(request):
+def update(request):
     # userToken = request.headers.get('Authorization').replace("BASIC ", "")
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
-        id = uuid.uuid1()
-        PembeliKomplain.objects.create(
-            id=id.hex
-        )
-        obj = PembeliKomplain.objects.get(id=id.hex)
+        obj = PembeliPromosi.objects.get(id=data["id"])
 
         try:
             obj.master_judul = data["master_judul"]
         except:
             pass
-        
+
         try:
             obj.title = data["title"]
         except:
@@ -36,13 +31,8 @@ def create(request):
         except:
             pass
 
-        try:
-            obj.image_link = data["image_link"]
-        except:
-            pass
-
         obj.save()
 
-        return HttpResponse(id.hex)
+        return HttpResponse("success")
     else:
         return HttpResponse("failed")

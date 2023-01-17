@@ -4,7 +4,7 @@ import os
 import time
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
-from api.database.pembeli.komplainpesanan import PembeliKomplain
+from api.database.dgmall.article_syariaharea import ArticleSyariahArea
 
 
 @csrf_exempt
@@ -16,10 +16,10 @@ def imageUpload(request):
         upload_file = request.FILES["image"]
 
         # GET DATA BANNER BASED ON ID
-        dataPembeliKomplain = PembeliKomplain.objects.get(id=id)
+        dataStaycationarea = ArticleSyariahArea.objects.get(id=id)
                 
         # HAPUS YANG LAMA
-        old_image_link = dataPembeliKomplain.image_link
+        old_image_link = dataStaycationarea.image_link
 
         # REMOVE OLD FILE
         try:
@@ -35,10 +35,10 @@ def imageUpload(request):
 
         # UPLOAD NEW PHOTO TO MEDIA
         fs = FileSystemStorage()
-        fs.save("pembeli_komplain/" + new_filename, upload_file)
+        fs.save("syariaharea/" + new_filename, upload_file)
 
         # UPDATE RECORD
-        dataPembeliKomplain.image_link = "/media/pembeli_komplain/" + new_filename
-        dataPembeliKomplain.save()
+        dataStaycationarea.image_link = "/media/syariaharea/" + new_filename
+        dataStaycationarea.save()
 
         return HttpResponse('success')

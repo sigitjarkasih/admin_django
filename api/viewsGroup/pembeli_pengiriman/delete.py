@@ -1,7 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
-from api.database.pembeli.komplainpesanan import PembeliKomplain
+from api.database.pembeli.pengiriman import PembeliPengiriman
 from django.conf import settings
 import os
 
@@ -13,10 +13,10 @@ def delete(request):
         dataRequest = json.loads(request.body.decode("utf-8"))
 
         # GET DATA BANNER BASED ON ID
-        dataPembeliKomplain = PembeliKomplain.objects.get(id=dataRequest["id"])
+        dataPembeliPengiriman = PembeliPengiriman.objects.get(id=dataRequest["id"])
 
         # HAPUS YANG LAMA
-        old_image_link = dataPembeliKomplain.image_link
+        old_image_link = dataPembeliPengiriman.image_link
 
         # REMOVE OLD FILE
         try:
@@ -24,7 +24,7 @@ def delete(request):
         except:
             pass
 
-        PembeliKomplain.objects.filter(id=dataRequest["id"]).delete()
+        PembeliPengiriman.objects.filter(id=dataRequest["id"]).delete()
 
         return HttpResponse("success")
     else:
