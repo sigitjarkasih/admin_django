@@ -3,7 +3,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .urlsGroup import (
    article_akadtransaksi, article_dompetmadrasah, article_donasi, article_event, article_login, article_pembeli, article_penjual, article_register, article_staycation, article_syariaharea,
-   akun_keamanan, pembeli_pesanan, pembeli_pembayaran, pembeli_pengiriman, pembeli_pengembaliandana, pembeli_komplainpesanan, pembeli_promosi, pembeli_lainnya
+   akun_keamanan, pembeli_pesanan, pembeli_pembayaran, pembeli_pengiriman, pembeli_pengembaliandana, pembeli_komplainpesanan, pembeli_promosi, pembeli_lainnya,
+   penjual_akundankeamanantoko, penjual_fiturpenjualan, penjual_komplainpesanantoko, penjual_lainnya, penjual_pengirimanproduk, penjual_prosespesanan
 )
 
 urlpatterns = [
@@ -27,6 +28,13 @@ urlpatterns = [
      path("v1/pembeli-komplainpesanan/", include(pembeli_komplainpesanan.urlpatterns)),
      path("v1/pembeli-promosi/", include(pembeli_promosi.urlpatterns)),
      path("v1/pembeli-lainnya/", include(pembeli_lainnya.urlpatterns)),
+#PENJUAL
+     path("v1/akunkeamanan-toko/", include(penjual_akundankeamanantoko.urlpatterns)),
+     path("v1/fiturpenjualan-toko/", include(penjual_fiturpenjualan.urlpatterns)),
+     path("v1/komplainpesanan-toko/", include(penjual_komplainpesanantoko.urlpatterns)),
+     path("v1/penjual-lainnya/", include(penjual_lainnya.urlpatterns)),
+     path("v1/pengiriman-produk/", include(penjual_pengirimanproduk.urlpatterns)),
+     path("v1/proses-pesanan/", include(penjual_prosespesanan.urlpatterns)),
 ]
 
 if settings.DEBUG:
