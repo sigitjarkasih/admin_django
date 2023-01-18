@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from api.database.dgmall.article_syariaharea import ArticleSyariahArea
+from api.database.pembeli.komplainpesanan import PembeliKomplain
 import json
 import uuid
 
@@ -11,10 +11,10 @@ def create(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
         id = uuid.uuid1()
-        ArticleSyariahArea.objects.create(
+        PembeliKomplain.objects.create(
             id=id.hex
         )
-        obj = ArticleSyariahArea.objects.get(id=id.hex)
+        obj = PembeliKomplain.objects.get(id=id.hex)
 
         try:
             obj.master_judul = data["master_judul"]
